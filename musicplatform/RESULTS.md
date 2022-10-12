@@ -7,7 +7,7 @@ path : ../myScripts/hima.py
 if you run the script , it will generate query to be add to the shell to create many albums 
 ** you should import models and datetime library . 
 ----------------------------------
-
+ 
 # task 1 
 
 ## 1- create some artists

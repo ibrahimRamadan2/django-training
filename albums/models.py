@@ -1,3 +1,4 @@
+from email.policy import default
 from multiprocessing import managers
 from django.db import models
 from artists.models import Artist
@@ -11,6 +12,7 @@ class Album(models.Model):
     releaseDate = models.DateTimeField(auto_now=False, auto_now_add=False)
     cost = models.FloatField()
     artist = models.ForeignKey(Artist , on_delete=models.CASCADE)
+    isAccepted = models.BooleanField(default=False)
     def __str__(self) -> str:
         return  f"{self.name}"
     class Meta:
