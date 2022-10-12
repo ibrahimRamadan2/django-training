@@ -1,0 +1,4 @@
+.env
+db.sqlite3
+albums/__pycache__/
+artists/__pycache__/
