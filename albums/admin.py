@@ -11,7 +11,7 @@ class MyForm(forms.ModelForm):
      
 class AlbumAdmin(admin.ModelAdmin):
     list_display=("name" , "cost", "isAccepted")
-    readonly_fields=("creationDate",)
+    # readonly_fields=("creationDate",)
     form = MyForm
     
 admin.site.register(Album , AlbumAdmin)
