@@ -1,8 +1,9 @@
 from datetime import datetime
- 
 from django.db import models
 from artists.models import Artist
 from model_utils.models import TimeStampedModel
+
+
 # Create your models here.
 
 
@@ -20,11 +21,15 @@ class Album(TimeStampedModel):
 
     def __str__(self) -> str:
         return f"{self.name}"
-
+    
     class Meta:
         ordering = ('name',)
 
 
+class song(models.Model):
+    name=  models.CharField(max_length=100)
+    image = models.ImageField(upload_to=None, height_field=100, width_field=100)
+    
 # from albums.models import Artist , Album
 # Artist.objects.order_by("approved_albums")
 # f = models.Q(album__isAccepted =True)

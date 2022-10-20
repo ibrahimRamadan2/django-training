@@ -8,7 +8,7 @@ class AlbumInline(admin.StackedInline):
 
 class ArtistAdmin(admin.ModelAdmin):
     list_display = ("stageName", "accepted_albums",)
-    inlines = (AlbumInline ,)
+    
     def accepted_albums(self, obj):
         lst = obj.album_set.all()
         cnt = 0

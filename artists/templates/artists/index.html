@@ -7,7 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-     {% for artist in artists %}
+    <h1>{{user}}</h1>
+    {% if user.is_authenticated%}
+        {% for artist in artists %}
         <h2> Name : {{artist.stageName}}</h2>
         <div>&nbsp;&nbsp; ID : {{artist.id}}</div>
         <h3>&nbsp;&nbsp;&nbsp;Albums :</h3>
@@ -23,5 +25,13 @@
         <div>&nbsp;&nbsp;---------------------------------------------</div>
         </br></br>
         {% endfor %}
+
+
+        
+
+    {%else%}
+        <h3>you have to login to access this Page , you can login 
+        <a href="/login-user">here</a></h3>
+    {% endif %}
 </body>
 </html>
