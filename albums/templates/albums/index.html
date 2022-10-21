@@ -18,14 +18,14 @@
                 <div>name : {{album.name}} </div><br>
                 <div>Created At : {{album.created}} </div><br>
                 <div>cost : {{album.cost}} </div><br>
-                <div>Artist : {{album.artist.stageName}} </div><br> 
+                <div>Artist : {{album.artist.stage_name}} </div><br> 
                 <div>Release at : {{album.release_at}} </div><br>  
                 <div>IsAccepted : {{album.isAccepted}} </div><br> 
                 <br><br> 
         {% endfor %}
     {%else%}
         <h3>you have to login to access this Page , you can login 
-        <a href="/login">here</a></h3>
+        <a href="/login-user">here</a></h3>
    {% endif %}
 </body>
 </html>

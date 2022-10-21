@@ -21,7 +21,7 @@ class createView(View):
     def post(self, request):
         form = ArtistForm(request.POST)
         if(form.is_valid()):
-            name = request.POST['stageName']
+            name = request.POST['stage_name']
             form.save()
             return HttpResponseRedirect("/artist")
         return render(request , "/create.html" , {'form':form})

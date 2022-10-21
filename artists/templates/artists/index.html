@@ -7,10 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>{{user}}</h1>
+    
     {% if user.is_authenticated%}
         {% for artist in artists %}
-        <h2> Name : {{artist.stageName}}</h2>
+        <h2> Name : {{artist.stage_name}}</h2>
         <div>&nbsp;&nbsp; ID : {{artist.id}}</div>
         <h3>&nbsp;&nbsp;&nbsp;Albums :</h3>
         {% for album in artist.album_set.all %}

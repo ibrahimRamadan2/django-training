@@ -1,5 +1,5 @@
 from django.shortcuts import render
- 
+from django.http import HttpResponseRedirect
 from .forms import albumForm
 from .models import Album
 from django.views import  View
