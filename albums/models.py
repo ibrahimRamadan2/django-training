@@ -2,8 +2,9 @@ from datetime import datetime
 from django.db import models
 from artists.models import Artist
 from model_utils.models import TimeStampedModel
-
-
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill 
+from .validatots import validate_file_extension
 # Create your models here.
 
 
@@ -28,7 +29,16 @@ class Album(TimeStampedModel):
 
 class song(models.Model):
     name=  models.CharField(max_length=100)
-    image = models.ImageField(upload_to=None, height_field=100, width_field=100)
+    height = models.IntegerField(null=True,blank=True),
+    width = models.IntegerField(null=True,blank=True),
+    image = models.ImageField(upload_to='images/', height_field='height',
+     width_field='width')
+    avatar_thumbnail = ImageSpecField(source='image',
+                                      processors=[ResizeToFill(100, 50)],
+                                      format='JPEG',
+                                      options={'quality': 60})
+    audio_file=models.FileField( upload_to='audio/', max_length=100, default=None,
+    )
     
 # from albums.models import Artist , Album
 # Artist.objects.order_by("approved_albums")
