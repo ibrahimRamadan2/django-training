@@ -20,7 +20,7 @@ class User_Serializer(serializers.ModelSerializer):
     def validate(self, data) :
         password = data['password']
         num_cnt  , symbol_cnt , char_cnt=0,0,0
-        print(password)
+         
         for ch in password :
             if(ch >='A' and ch <='z'):
                 char_cnt+=1 
