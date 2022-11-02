@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    {% if user.is_authenticated%}
+        {% for artist in artists %}
+        <h2> Name : {{artist.stage_name}}</h2>
+        <div>&nbsp;&nbsp; ID : {{artist.id}}</div>
+        <h3>&nbsp;&nbsp;&nbsp;Albums :</h3>
+        {% for album in artist.album_set.all %}
+        <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; id :{{album.id}}</h3>
+        <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name : {{album.name}}</h3>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; craeted at : {{album.created}}</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; released at : {{album.release_at}}</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Cost : {{album.cost}}</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--------------------------------</div>
+        
+        {% endfor %}   
+        <div>&nbsp;&nbsp;---------------------------------------------</div>
+        </br></br>
+        {% endfor %}
+
+
+        
+
+    {%else%}
+        <h3>you have to login to access this Page , you can login 
+        <a href="/login-user">here</a></h3>
+    {% endif %}
+</body>
+</html>
