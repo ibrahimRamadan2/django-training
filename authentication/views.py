@@ -35,7 +35,7 @@ class LoginView(APIView):
                     'user':  cur_serializer.data  ,  
                      
                 })
-             
+            print("12312312")
             return Response(serializer.errors  , status.HTTP_400_BAD_REQUEST)
         return Response( serializer.errors, status.HTTP_400_BAD_REQUEST)
  

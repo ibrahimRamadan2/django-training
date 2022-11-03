@@ -5,7 +5,7 @@ from rest_framework.test import APIClient
 from knox.auth import AuthToken
 from users.models import Extended_User
 from django.contrib.auth import authenticate
- 
+from artist.models import Artist
 
 @pytest.fixture 
 def auth_client(db):
@@ -31,10 +31,39 @@ def auth_client(db):
             client.credentials(HTTP_AUTHORIZATION='Token ' + token)
             # return client
             # then test the rest endpoints with this token 
-
-           
         else:
             client.force_authenticate(user = cur_user)
         return client
     return get_auth_user
         
+
+
+
+@pytest.fixture 
+def auth_client_artist(db):
+    def get_auth_Artist(cur_user=None):
+        client = APIClient()
+        
+        if(cur_user is None):
+            user = Extended_User.objects.create_user(username= "hima2" , password = "123123h@")
+            user.save() 
+            artist = Artist.objects.create(stage_name='hima2' , user =user)
+            artist.save() 
+            #get token from login Knox View 
+            # this part is already testing the login end point and return : 
+            # token : 
+            # userData :  
+            response = client.post('/authentication/login/' , {
+                'username'  : "hima2" ,
+                'password' : '123123h@',
+            } , format='json')
+            data =response.data 
+            token = data['token']
+            #print(data)
+            client.credentials(HTTP_AUTHORIZATION='Token ' + token)
+            # return client
+            # then test the rest endpoints with this token 
+        else:
+            client.force_authenticate(user = cur_user)
+        return client
+    return get_auth_Artist

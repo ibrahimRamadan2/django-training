@@ -34,7 +34,7 @@ def test_Create_User(db):
 def test_Get_User_Details(auth_client):
     client = auth_client()
     response = client.get('/user/1')
-    # print(response.data)
+  
     user = Extended_User.objects.get(id = 1) 
     data = response.data 
     assert user.username == data['username']
