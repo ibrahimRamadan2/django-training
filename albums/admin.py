@@ -1,7 +1,7 @@
 import imp
 from multiprocessing import managers
 from django.contrib import admin
-from .models import Album
+from .models import Album , song
 from django import forms
 # Register your models here.
 class MyForm(forms.ModelForm):
@@ -15,5 +15,6 @@ class AlbumAdmin(admin.ModelAdmin):
     form = MyForm
     
 admin.site.register(Album , AlbumAdmin)
+admin.site.register(song)
 
 # py manage.py makemigrations
