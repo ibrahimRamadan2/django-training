@@ -16,10 +16,9 @@ Including another URLconf
 from django.contrib import admin 
  
 from django.urls import path , include
-
+ 
 urlpatterns = [
-    path('artist/' , include("artists.urls")),
-    path('album/' , include("albums.urls")),
     path('admin/', admin.site.urls),
-    path('' , include('account.urls')) ,
+    path('authentication/' , include('authentication.urls')),
+    path('' , include('users.urls'))
 ]
